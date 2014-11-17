@@ -29,7 +29,7 @@ game.PlayerEntity = me.Entity.extend({
         }
         
         if(this.body.vel.x !== 0){
-            if(!this.renderable.isCurrentAnimation("smallwalk")) {
+            if(!this.renderable.isCurrentAnimation("smallWalk")) {
                 this.renderable.setCurrentAnimation("smallWalk");
                 this.renderable.setAnimationFrame();
             }
