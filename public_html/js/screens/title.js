@@ -12,20 +12,20 @@ game.TitleScreen = me.ScreenObject.extend({
                         this.font = new me.Font("monospace", 46, "red");
                         
                     },
-                    
+                    //makes title screen
                     draw: function(renderer){
                         this.font.draw(renderer.getContext(), "MARIOOO", 450, 130);
                         this.font.draw(renderer.getContext(), "PRESS ENTER TO PLAY", 250, 530);
                     }
                     
                 })));
-                
+                //makes size and text of title screen
                 this.handler = me.event.subscribe(me.event.KEYDOWN, function (action, keyCode, edge){
                     if(action === "start"){
                         me.state.change(me.state.PLAY);
                     }
                 });
-	},
+	},//when key is presse it dosn't restart the game 
 	
 	
 	/**	

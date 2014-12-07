@@ -34,3 +34,4 @@ game.PlayScreen = me.ScreenObject.extend({
                 me.game.world.addChild(player, 6);
         }
 });
+//resets player

@@ -11,6 +11,7 @@ game.PlayerEntity = me.Entity.extend({
                     return (new me.Rect(0, 0, 30, 128)).toPolygon();
                 }
             }]);
+        //my player entities
 
         this.renderable.addAnimation("idle", [3]);
         this.renderable.addAnimation("smallWalk", [8, 9, 10, 11, 12, 13], 80);
@@ -41,7 +42,7 @@ game.PlayerEntity = me.Entity.extend({
           
         this.body.update(delta);
         me.collision.check(this, true, this.collideHandler.bind(this), true);
-
+           //sets animation smallwalk
         if (this.body.vel.x !== 0) {
             if (!this.renderable.isCurrentAnimation("smallWalk")) {
                 this.renderable.setCurrentAnimation("smallWalk");
@@ -70,7 +71,7 @@ game.PlayerEntity = me.Entity.extend({
                 }
 
              });
-
+//makes it so you  can kill the badguys
 
 game.LevelTrigger = me.Entity.extend({
     init: function(x, y, settings) {
@@ -102,7 +103,7 @@ game.BadGuy = me.Entity.extend({
                     return (new me.Rect(0, 0, 60, 28)).toPolygon();
                 }
             }]);
-
+//the badguys entities
         this.spritewidth = 60;
         var width = settings.width;
         x = this.pos.x;
@@ -122,6 +123,7 @@ game.BadGuy = me.Entity.extend({
 
         this.body.setVelocity(2, 6);
     },
+    //sets velocity of the badguys
     update: function(delta) {
         this.body.update(delta);
         me.collision.check(this, true, this.collideHandler.bind(this), true);
@@ -132,6 +134,7 @@ game.BadGuy = me.Entity.extend({
             } else if (!this.walkLeft && this.pos.x >= this.endX) {
                 this.walkLeft = true;
             }
+            //how badguy moves
             this.flipX(!this.walkLeft);
             this.body.vel.x += (this.walkLeft) ? -this.body.accel.x * me.timer.tick : this.body.accel.x * me.timer.tick;
 

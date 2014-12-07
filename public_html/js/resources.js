@@ -9,7 +9,7 @@ game.resources = [
     {name: "mario", type: "image", src: "data/img/player1.png"},
     {name: "title-screen", type: "image", src: "data/img/title-screen\n\.png"},
     {name: "slime", type: "image", src: "data/img/slime-spritesheet.png"},
-    
+//all of the images    
 	/* Atlases 
 	 * @example
 	 * {name: "example_tps", type: "tps", src: "data/img/example_tps.json"},
@@ -23,7 +23,7 @@ game.resources = [
         
     {name: "carterlevel01", type: "tmx", src: "data/map/carterlevel01.tmx"},
     {name: "carterlevel02", type: "tmx", src: "data/map/carterlevel02.tmx"},
-     
+     //loads levels
 	/* Background music. 
 	 * @example
 	 * {name: "example_bgm", type: "audio", src: "data/bgm/"},
