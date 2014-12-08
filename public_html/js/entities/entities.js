@@ -19,6 +19,7 @@ game.PlayerEntity = me.Entity.extend({
         //the number 80 means we switch through the images every 80 miliseconds
 
         this.renderable.setCurrentAnimation("idle");
+        this.big = false;
         //sets the speed we go on the x-axis first number and y-axis second number
         this.body.setVelocity(5, 20);
 
@@ -58,19 +59,21 @@ game.PlayerEntity = me.Entity.extend({
         this._super(me.Entity, "update", [delta]);
         return true;
     },
-        collideHandler: function(response) {
-            var ydif = this.pos.y - response.b.pos.y;
+    collideHandler: function(response) {
+        var ydif = this.pos.y - response.b.pos.y;
 
-            if (response.b.type === 'badguy') {
-                if (ydif <= -115) {
+        if (response.b.type === 'badguy') {
+            if (ydif <= -115) {
                 response.b.alive = false;
-                } else {
-                    me.state.change(me.state.MENU);
-                }
+            } else {
+                me.state.change(me.state.MENU);
+            }
 
-                }
-
-             });
+        } else if (response.b.type === 'mushroom') {
+console.log("big!");
+        }
+    }
+});
 //makes it so you  can kill the badguys
 
 game.LevelTrigger = me.Entity.extend({
@@ -152,3 +155,21 @@ game.BadGuy = me.Entity.extend({
 
 });
 
+game.Mushroom = me.Entity.extend({
+        init: function(x, y, settings){
+            this._super(me.Entity, 'init', [x, y, {
+                image: "mushroom",
+                spritewidth: "64",
+                spriteheight: "64",
+                width: 64,
+                height: 64,
+                getShape: function() {
+                    return (new me.Rect(0, 0, 64, 64)).toPolygon();
+                }
+            }]);
+        
+        me.collision.check(this);
+        this.type = "mushroom";
+        }
+        
+});
